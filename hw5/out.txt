@@ -1,0 +1,861 @@
+SML not set: using default of /home/akeen/public/ml/bin/sml
+[--- New Feature Testing ---]
+==== tests/1_parser/badparse01.jsish ====
+==== tests/1_parser/badparse02.jsish ====
+1c1
+< expected 'value', found ';'
+---
+> expected ';', found '='
+==== tests/1_parser/badparse03.jsish ====
+==== tests/1_parser/badparse04.jsish ====
+==== tests/1_parser/badparse05.jsish ====
+==== tests/1_parser/badparse06.jsish ====
+==== tests/1_parser/badparse07.jsish ====
+1c1
+< unexpected token '='
+---
+> expected ';', found '='
+==== tests/1_parser/badparse08.jsish ====
+1c1
+< unexpected token '='
+---
+> expected ';', found '='
+==== tests/1_parser/badparse09.jsish ====
+1c1
+< unexpected token '='
+---
+> expected ';', found '='
+==== tests/1_parser/badparse10.jsish ====
+1c1
+< expected 'value', found ';'
+---
+> expected 'value', found ' {'
+==== tests/1_parser/badparse11.jsish ====
+1c1
+< expected '}', found 'eof'
+---
+> expected 'value', found ' {'
+==== tests/1_parser/badparse12.jsish ====
+1c1
+< expected 'value', found 'eof'
+---
+> expected 'value', found 'print'
+==== tests/1_parser/badparse13.jsish ====
+1c1
+< expected ';', found '2'
+---
+> expected 'value', found ' {'
+==== tests/1_parser/badparse14.jsish ====
+1c1
+< expected '{', found 'print'
+---
+> expected 'value', found 'if'
+==== tests/1_parser/badparse15.jsish ====
+1c1
+< expected ')', found '{'
+---
+> expected 'value', found 'if'
+==== tests/1_parser/badparse16.jsish ====
+1c1
+< expected '{', found 'eof'
+---
+> expected 'value', found 'if'
+==== tests/1_parser/badparse17.jsish ====
+1c1
+< expected '}', found 'else'
+---
+> expected 'value', found ' {'
+==== tests/1_parser/badparse18.jsish ====
+1c1
+< expected '{', found 'else'
+---
+> expected 'value', found 'if'
+==== tests/1_parser/badparse19.jsish ====
+1c1
+< expected ')', found '{'
+---
+> expected 'value', found 'while'
+==== tests/1_parser/badparse20.jsish ====
+1c1
+< expected '(', found '{'
+---
+> expected 'value', found 'while'
+==== tests/1_parser/badparse21.jsish ====
+1c1
+< expected '{', found 'print'
+---
+> expected 'value', found 'while'
+==== tests/1_parser/badparse22.jsish ====
+1c1
+< expected '{', found 'print'
+---
+> expected 'value', found 'if'
+==== tests/1_parser/badparse23.jsish ====
+1c1
+< expected ';', found '!'
+---
+> expected ';', found '='
+==== tests/1_parser/badparse24.jsish ====
+1c1
+< expected 'value', found '!'
+---
+> expected ';', found '='
+==== tests/1_parser/badparse25.jsish ====
+1c1
+< expected '{', found ')'
+---
+> expected 'value', found 'if'
+==== tests/2_3_ast_echo/eval01.jsish ====
+1d0
+< id;
+==== tests/2_3_ast_echo/eval02.jsish ====
+7d6
+< a;
+==== tests/2_3_ast_echo/eval03.jsish ====
+1c1
+< expected ';', found '='
+---
+> invalid symbol: '''
+1,2c1
+< (a = 1);
+< a;
+---
+> invalid symbol: '''
+==== tests/2_3_ast_echo/eval04.jsish ====
+1c1
+< expected ';', found '='
+---
+> invalid symbol: '''
+1,6c1
+< (a = 1);
+< (b = 2);
+< (c = a);
+< a;
+< c;
+< b;
+---
+> invalid symbol: '''
+==== tests/2_3_ast_echo/eval05.jsish ====
+1c1
+< expected ';', found '='
+---
+> invalid symbol: '''
+1,15c1
+< (a = 1);
+< (b = 2);
+< (a + 2);
+< (b - 7);
+< ((a + b) - 7);
+< (3 + (b * 4));
+< (a = 8);
+< (b = 6);
+< ((a - 7) - b);
+< (a - (7 - b));
+< ((a - 7) - b);
+< (((a = 2) , (b = 3)) , (c = 4));
+< ((1 + (a * b)) + (((7 * c) / a) * 5));
+< (a = (b = (c = 4)));
+< ((1 + (a * b)) + (((7 * c) / a) * 5));
+---
+> invalid symbol: '''
+==== tests/2_3_ast_echo/eval06.jsish ====
+1c1
+< expected ';', found '='
+---
+> invalid symbol: '''
+1,7c1
+< (id = 3);
+< (foo = 5);
+< (id >= foo);
+< (id <= foo);
+< ((id <= foo) && (foo <= 22));
+< ((id <= foo) && (foo > 22));
+< ((id < foo) || (foo > 10));
+---
+> invalid symbol: '''
+==== tests/2_3_ast_echo/eval07.jsish ====
+1c1
+< expected ';', found '='
+---
+> invalid symbol: '''
+1,9c1
+< (i = 20);
+< ((i == 10) ? (i = 15) : ((i == 20) ? (i = 5) : (i = i)));
+< i;
+< (i = 10);
+< ((i == 10) ? (i = 15) : ((i == 20) ? (i = 5) : (i = i)));
+< i;
+< (i = 40);
+< ((i == 10) ? (i = 15) : ((i == 20) ? (i = 5) : (i = i)));
+< i;
+---
+> invalid symbol: '''
+==== tests/2_3_ast_echo/eval08.jsish ====
+1c1
+< expected ';', found '='
+---
+> invalid symbol: '''
+1,4c1
+< (pi1000 = 3141);
+< (r = 9);
+< (area = (((r * r) * pi1000) / 1000));
+< area;
+---
+> invalid symbol: '''
+==== tests/2_3_ast_echo/eval09.jsish ====
+1c1
+< expected ')', found '('
+---
+> invalid symbol: '''
+1,12c1
+< (((a = 2) > 1) && ((b = 3) > 2));
+< a;
+< b;
+< (((c = 2) > 4) && ((d = 3) > 2));
+< c;
+< d;
+< (((e = 2) > 1) || ((f = 3) > 2));
+< e;
+< f;
+< (((g = 2) > 9) || ((h = 3) > 2));
+< g;
+< h;
+---
+> invalid symbol: '''
+==== tests/2_3_ast_echo/eval10.jsish ====
+1c1
+< expected 'value', found ' {'
+---
+> invalid symbol: '''
+1,2c1
+< {
+< }
+---
+> invalid symbol: '''
+==== tests/2_3_ast_echo/eval11.jsish ====
+1c1
+< expected 'value', found ' {'
+---
+> invalid symbol: '''
+1,3c1
+< {
+< (i = 1);
+< }
+---
+> invalid symbol: '''
+==== tests/2_3_ast_echo/eval12.jsish ====
+1c1
+< expected 'value', found ' {'
+---
+> invalid symbol: '''
+1,4c1
+< {
+< (i = a);
+< (b = b);
+< }
+---
+> invalid symbol: '''
+==== tests/2_3_ast_echo/eval13.jsish ====
+1c1
+< expected 'value', found ' {'
+---
+> invalid symbol: '''
+1,3c1
+< {
+< (i = ((1 + (2 * 3)) + (4 * (5 + 6))));
+< }
+---
+> invalid symbol: '''
+==== tests/2_3_ast_echo/eval14.jsish ====
+1c1
+< expected 'value', found ' {'
+---
+> invalid symbol: '''
+1,3c1
+< {
+< print i;
+< }
+---
+> invalid symbol: '''
+==== tests/2_3_ast_echo/eval15.jsish ====
+1c1
+< expected 'value', found 'print'
+---
+> invalid symbol: '''
+1c1
+< print (true && false);
+---
+> invalid symbol: '''
+==== tests/2_3_ast_echo/eval16.jsish ====
+1c1
+< expected 'value', found 'print'
+---
+> invalid symbol: '''
+1c1
+< print (1 < 2);
+---
+> invalid symbol: '''
+==== tests/2_3_ast_echo/eval17.jsish ====
+1c1
+< expected 'value', found 'if'
+---
+> invalid symbol: '''
+1,7c1
+< if ((1 < 2))
+< {
+< print true;
+< }
+< else
+< {
+< }
+---
+> invalid symbol: '''
+==== tests/2_3_ast_echo/eval18.jsish ====
+1c1
+< expected 'value', found 'if'
+---
+> invalid symbol: '''
+1,8c1
+< if ((1 < 2))
+< {
+< print true;
+< }
+< else
+< {
+< print false;
+< }
+---
+> invalid symbol: '''
+==== tests/2_3_ast_echo/eval19.jsish ====
+1c1
+< expected 'value', found 'if'
+---
+> invalid symbol: '''
+1,15c1
+< if ((1 < 2))
+< {
+< if ((2 < 3))
+< {
+< print true;
+< }
+< else
+< {
+< }
+< print true;
+< }
+< else
+< {
+< print false;
+< }
+---
+> invalid symbol: '''
+==== tests/2_3_ast_echo/eval20.jsish ====
+1c1
+< expected 'value', found 'while'
+---
+> invalid symbol: '''
+1,4c1
+< while (false)
+< {
+< print 3;
+< }
+---
+> invalid symbol: '''
+==== tests/2_3_ast_echo/eval21.jsish ====
+1c1
+< expected 'value', found 'while'
+---
+> invalid symbol: '''
+1,6c1
+< while ((j != 0))
+< {
+< print j;
+< print "\n";
+< (j = (j - 1));
+< }
+---
+> invalid symbol: '''
+==== tests/2_3_ast_echo/eval22.jsish ====
+1c1
+< expected 'value', found 'while'
+---
+> invalid symbol: '''
+1,3c1
+< while (true)
+< {
+< }
+---
+> invalid symbol: '''
+==== tests/2_3_ast_echo/eval23.jsish ====
+1c1
+< expected ';', found '='
+---
+> invalid symbol: '''
+1,13c1
+< (i = 5);
+< (j = 5);
+< while ((!(i <= 0)))
+< {
+< while ((j > 0))
+< {
+< print (j + i);
+< print "\n";
+< (j = (j - 1));
+< }
+< print (j + i);
+< (i = (i - 1));
+< }
+---
+> invalid symbol: '''
+==== tests/2_3_ast_echo/eval24.jsish ====
+1c1
+< expected ';', found '='
+---
+> invalid symbol: '''
+1,11c1
+< (i = 1);
+< (i = 2);
+< (i = 3);
+< if (true)
+< {
+< (i = 4);
+< (i = 5);
+< }
+< else
+< {
+< }
+---
+> invalid symbol: '''
+==== tests/4_eval/eval01.jsish ====
+1c1
+< undefined
+---
+> expected ';', found '='
+==== tests/4_eval/eval02.jsish ====
+1,7c1
+< 2
+< 4
+< Hello.
+< true
+< undefined
+< false
+< undefined
+---
+> expected 'value', found 'print'
+==== tests/4_eval/eval03.jsish ====
+1c1
+< 1
+---
+> expected ';', found '='
+==== tests/4_eval/eval04.jsish ====
+1,3c1
+< 1
+< 1
+< 2
+---
+> expected ';', found '='
+==== tests/4_eval/eval05.jsish ====
+1,9c1
+< 3
+< -5
+< -4
+< 11
+< -5
+< 7
+< -5
+< 77
+< 52
+---
+> expected ';', found '='
+==== tests/4_eval/eval06.jsish ====
+1,5c1
+< false
+< true
+< true
+< false
+< true
+---
+> expected ';', found '='
+==== tests/4_eval/eval07.jsish ====
+1,3c1
+< 5
+< 15
+< 40
+---
+> expected ';', found '='
+==== tests/4_eval/eval08.jsish ====
+1c1
+< 254
+---
+> expected ';', found '='
+==== tests/4_eval/eval09.jsish ====
+1,8c1
+< 2
+< 3
+< 2
+< undefined
+< 2
+< undefined
+< 2
+< 3
+---
+> expected ')', found '('
+==== tests/4_eval/eval10.jsish ====
+1,2c1
+< 17 10
+< true false
+---
+> expected 'value', found ' {'
+==== tests/4_eval/eval11.jsish ====
+1,2c1
+< undefined
+< undefined
+---
+> expected ';', found '='
+==== tests/4_eval/eval12.jsish ====
+1,8c1
+< 3
+< -5
+< -4
+< 11
+< -5
+< 7
+< -5
+< 77
+---
+> expected 'value', found ' {'
+==== tests/4_eval/eval13.jsish ====
+1,10c1
+< false
+< true
+< false
+< false
+< true
+< false
+< true
+< true
+< false
+< true
+---
+> expected 'value', found ' {'
+==== tests/4_eval/eval14.jsish ====
+1,8c1
+< false
+< false
+< false
+< true
+< true
+< true
+< false
+< true
+---
+> expected 'value', found 'print'
+==== tests/4_eval/eval15.jsish ====
+1,9c1
+< 3
+< undefined
+< undefined
+< 3
+< 20
+< undefined
+< 22
+< 4
+< 26
+---
+> expected ';', found '='
+==== tests/4_eval/eval16.jsish ====
+1,3c1
+< 44
+< 22
+< 44
+---
+> expected ';', found '='
+==== tests/4_eval/eval17.jsish ====
+1,6c1
+< 1 2 3 4 5 6 7 8 9 10
+< 5
+< 15
+< 40
+< -1
+< 55
+---
+> expected ';', found '='
+==== tests/4_eval/eval18.jsish ====
+1,100c1
+< 100
+< 99
+< 98
+< 97
+< 96
+< 95
+< 94
+< 93
+< 92
+< 91
+< 90
+< 89
+< 88
+< 87
+< 86
+< 85
+< 84
+< 83
+< 82
+< 81
+< 80
+< 79
+< 78
+< 77
+< 76
+< 75
+< 74
+< 73
+< 72
+< 71
+< 70
+< 69
+< 68
+< 67
+< 66
+< 65
+< 64
+< 63
+< 62
+< 61
+< 60
+< 59
+< 58
+< 57
+< 56
+< 55
+< 54
+< 53
+< 52
+< 51
+< 50
+< 49
+< 48
+< 47
+< 46
+< 45
+< 44
+< 43
+< 42
+< 41
+< 40
+< 39
+< 38
+< 37
+< 36
+< 35
+< 34
+< 33
+< 32
+< 31
+< 30
+< 29
+< 28
+< 27
+< 26
+< 25
+< 24
+< 23
+< 22
+< 21
+< 20
+< 19
+< 18
+< 17
+< 16
+< 15
+< 14
+< 13
+< 12
+< 11
+< 10
+< 9
+< 8
+< 7
+< 6
+< 5
+< 4
+< 3
+< 2
+< 1
+---
+> expected ';', found '='
+==== tests/4_eval/eval19.jsish ====
+1c1
+< 120
+---
+> expected ';', found '='
+==== tests/4_eval/eval20.jsish ====
+1c1
+< 31
+---
+> expected ';', found '='
+==== tests/4_eval/eval21.jsish ====
+1,108c1
+< -15
+< -14
+< -13
+< -12
+< -11
+< -10
+< -9
+< -8
+< -7
+< -6
+< -5
+< -4
+< -3
+< -2
+< -1
+< -14
+< -13
+< -12
+< -11
+< -10
+< -9
+< -8
+< -7
+< -6
+< -5
+< -4
+< -3
+< -2
+< -1
+< -13
+< -12
+< -11
+< -10
+< -9
+< -8
+< -7
+< -6
+< -5
+< -4
+< -3
+< -2
+< -1
+< -12
+< -11
+< -10
+< -9
+< -8
+< -7
+< -6
+< -5
+< -4
+< -3
+< -2
+< -1
+< -11
+< -10
+< -9
+< -8
+< -7
+< -6
+< -5
+< -4
+< -3
+< -2
+< -1
+< -9
+< -8
+< -7
+< -6
+< -5
+< -4
+< -3
+< -2
+< -1
+< -8
+< -7
+< -6
+< -5
+< -4
+< -3
+< -2
+< -1
+< -7
+< -6
+< -5
+< -4
+< -3
+< -2
+< -1
+< -6
+< -5
+< -4
+< -3
+< -2
+< -1
+< 5
+< -1112
+< -4
+< -3
+< -2
+< -1
+< -3
+< -2
+< -1
+< -2
+< -1
+< -1
+< 10
+---
+> expected ';', found '='
+==== tests/4_eval/eval22.jsish ====
+0a1
+> expected 'value', found 'while'
+==== tests/4_eval/eval23.jsish ====
+1,6c1
+< undefined
+< undefined
+< 7
+< undefined
+< 17
+< 10
+---
+> expected ';', found '='
+==== tests/4_type_error/eval01.jsish ====
+1c1
+< operator '-' requires number * number, found undefined * undefined
+---
+> expected ';', found '='
+==== tests/4_type_error/eval02.jsish ====
+1,8c1
+< boolean guard required for 'while' statement, found undefined
+< 4
+< 3
+< 2
+< 1
+< 0
+< -1
+< -2
+---
+> expected ';', found '='
+==== tests/4_type_error/eval03.jsish ====
+1c1
+< operator '>' requires number * number, found undefined * number
+---
+> expected ';', found '='
+==== tests/4_type_error/eval04.jsish ====
+1c1
+< operator '>=' requires number * number, found number * undefined
+---
+> expected ';', found '='
+==== tests/4_type_error/eval05.jsish ====
+1c1
+< boolean guard required for 'while' statement, found number
+---
+> expected 'value', found 'while'
+==== tests/4_type_error/eval06.jsish ====
+1c1
+< boolean guard required for 'if' statement, found number
+---
+> expected 'value', found 'if'
+==== tests/4_type_error/eval07.jsish ====
+1d0
+< variable 'a' not found

@@ -1,0 +1,201 @@
+#!/bin/csh -f
+# test one and do diff
+
+if (! -f "hw2.sml") then
+echo "must provide source file 'hw2.sml'"; exit 1
+endif
+
+/home/akeen/public/ml/bin/sml >&! tmp << END
+val devnull = Posix.FileSys.openf ("/dev/null", Posix.FileSys.O_WRONLY, Posix.FileSys.O.trunc);
+val sout = Posix.IO.dup(Posix.FileSys.stdout);
+Posix.IO.dup2 {old=devnull, new=Posix.FileSys.stdout};
+
+Control.Print.printDepth := 20;
+Control.Print.printLength := 100;
+
+datatype 'a List =
+     ListNode of ('a * 'a List)
+   | EmptyList
+;
+
+datatype 'a BinTree =
+     BinTreeNode of {value: 'a, lft: 'a BinTree, rht: 'a BinTree}
+   | EmptyBinTree
+;
+
+datatype 'a ThingCollection =
+     OneThing of ('a * 'a ThingCollection)
+   | TwoThings of ('a * 'a * 'a ThingCollection)
+   | ManyThings of ('a list * 'a ThingCollection)
+   | Nothing
+;
+
+datatype NTree =
+     NTreeNode of int * NTree list
+   | EmptyNTree
+;
+
+use "hw2.sml";
+
+fun printPart s =
+   TextIO.print ("\n--------- Part" ^ s ^ " ---------\n")
+;
+
+Posix.IO.dup2 {old=sout, new=Posix.FileSys.stdout};
+
+printPart "1";
+TextIO.print " **** consList (1, EmptyList);\n";
+consList (1, EmptyList);
+TextIO.print " **** consList (2, consList (1, EmptyList));\n";
+consList (2, consList (1, EmptyList));
+TextIO.print " **** consList (consList (2, EmptyList), consList (EmptyList, EmptyList));\n";
+consList (consList (2, EmptyList), consList (EmptyList, EmptyList));
+TextIO.print " **** headList (consList (1, EmptyList));\n";
+headList (consList (1, EmptyList));
+TextIO.print " **** headList (consList (2, consList (1, EmptyList)));\n";
+headList (consList (2, consList (1, EmptyList)));
+TextIO.print " **** headList (consList (consList (2, EmptyList), consList (EmptyList, EmptyList)));\n";
+headList (consList (consList (2, EmptyList), consList (EmptyList, EmptyList)));
+TextIO.print " **** tailList (consList (1, EmptyList));\n";
+tailList (consList (1, EmptyList));
+TextIO.print " **** tailList (consList (2, consList (1, EmptyList)));\n";
+tailList (consList (2, consList (1, EmptyList)));
+TextIO.print " **** tailList (consList (consList (2, EmptyList), consList (EmptyList, EmptyList)));\n";
+tailList (consList (consList (2, EmptyList), consList (EmptyList, EmptyList)));
+TextIO.print " **** tailList (tailList (consList (consList (2, EmptyList), consList (EmptyList, EmptyList))));\n";
+tailList (tailList (consList (consList (2, EmptyList), consList (EmptyList, EmptyList))));
+TextIO.print " **** headList (tailList (consList (consList (2, EmptyList), consList (EmptyList, EmptyList))));\n";
+headList (tailList (consList (consList (2, EmptyList), consList (EmptyList, EmptyList))));
+
+printPart "2";
+TextIO.print " **** lengthList EmptyList;\n";
+lengthList EmptyList;
+TextIO.print " **** lengthList (ListNode (9, (ListNode (3, ListNode (2, EmptyList)))));\n";
+lengthList (ListNode (9, (ListNode (3, ListNode (2, EmptyList)))));
+TextIO.print " **** lengthList (ListNode (9, ListNode (2, EmptyList)));\n";
+lengthList (ListNode (9, ListNode (2, EmptyList)));
+
+printPart "3";
+TextIO.print " **** mapList (fn x => x * x) EmptyList;\n";
+mapList (fn x => x * x) EmptyList;
+TextIO.print " **** mapList (fn x => x * x) (ListNode (9, (ListNode (3, ListNode (2, EmptyList)))));\n";
+mapList (fn x => x * x) (ListNode (9, (ListNode (3, ListNode (2, EmptyList)))));
+TextIO.print " **** mapList (fn x => x + 1) (ListNode (9, (ListNode (3, ListNode (2, EmptyList)))));\n";
+mapList (fn x => x + 1) (ListNode (9, (ListNode (3, ListNode (2, EmptyList)))));
+TextIO.print " **** mapList (fn x => x + 1) (ListNode (9, ListNode (2, EmptyList)));\n";
+mapList (fn x => x + 1) (ListNode (9, ListNode (2, EmptyList)));
+TextIO.print " **** mapList (fn x => x * x) (ListNode (9, ListNode (2, EmptyList)));\n";
+mapList (fn x => x * x) (ListNode (9, ListNode (2, EmptyList)));
+
+printPart "4";
+val Bexmp1 =
+BinTreeNode
+   {value=1,
+    lft=BinTreeNode {value=9, lft=EmptyBinTree, rht=EmptyBinTree},
+    rht=BinTreeNode {value=4, lft=EmptyBinTree, rht=EmptyBinTree}
+   }
+;
+val Bexmp2 =
+BinTreeNode
+   {value=4,
+    lft=BinTreeNode {value=2, lft=EmptyBinTree, rht=EmptyBinTree},
+    rht=EmptyBinTree
+   }
+;
+val Bexmp3 =
+BinTreeNode
+   {value=4,
+    rht=BinTreeNode {value=2, lft=EmptyBinTree, rht=EmptyBinTree},
+    lft=EmptyBinTree
+   }
+;
+val Bexmp =
+BinTreeNode
+   {value=12,
+    lft=BinTreeNode {value=0, lft=Bexmp1, rht=Bexmp2},
+    rht=Bexmp3
+   }
+;
+
+TextIO.print " **** mapBinTree (fn x => x + 1) Bexmp;\n";
+mapBinTree (fn x => x + 1) Bexmp;
+TextIO.print " **** mapBinTree (fn x => x * 2) EmptyBinTree;\n";
+mapBinTree (fn x => x * 2) EmptyBinTree;
+TextIO.print " **** mapBinTree (fn x => x * x) Bexmp;\n";
+mapBinTree (fn x => x * x) Bexmp;
+
+printPart "5";
+TextIO.print " **** countThingsInCollection Nothing;\n";
+countThingsInCollection Nothing;
+TextIO.print " **** countThingsInCollection (OneThing (7, Nothing));\n";
+countThingsInCollection (OneThing (7, Nothing));
+TextIO.print " **** countThingsInCollection (OneThing (7, ManyThings ([1,2], TwoThings (1,2,Nothing))));\n";
+countThingsInCollection (OneThing (7, ManyThings ([1,2], TwoThings (1,2,Nothing))));
+TextIO.print " **** countThingsInCollection (OneThing (7, ManyThings ([1,2], TwoThings (1,2, ManyThings ([3,4,5], ManyThings ([], OneThing (2, TwoThings (9, 4, Nothing))))))));\n";
+countThingsInCollection (OneThing (7, ManyThings ([1,2], TwoThings (1,2, ManyThings ([3,4,5], ManyThings ([], OneThing (2, TwoThings (9, 4, Nothing))))))));
+
+printPart "6";
+TextIO.print " **** countOneThingNodes Nothing;\n";
+countOneThingNodes Nothing;
+TextIO.print " **** countOneThingNodes (OneThing (7, Nothing));\n";
+countOneThingNodes (OneThing (7, Nothing));
+TextIO.print " **** countOneThingNodes (OneThing (7, ManyThings ([1, 2], TwoThings (1, 2, Nothing))));\n";
+countOneThingNodes (OneThing (7, ManyThings ([1, 2], TwoThings (1, 2, Nothing))));
+TextIO.print " **** countOneThingNodes (OneThing (7, ManyThings ([1, 2], TwoThings (1, 2, OneThing (99, Nothing)))));\n";
+countOneThingNodes (OneThing (7, ManyThings ([1, 2], TwoThings (1, 2, OneThing (99, Nothing)))));
+
+printPart "7";
+TextIO.print " **** countNodesByPredicate (fn (OneThing _) => true | _ => false) Nothing;\n";
+countNodesByPredicate (fn (OneThing _) => true | _ => false) Nothing;
+TextIO.print " **** countNodesByPredicate (fn (OneThing _) => true | _ => false) (OneThing (7, Nothing));\n";
+countNodesByPredicate (fn (OneThing _) => true | _ => false) (OneThing (7, Nothing));
+TextIO.print " **** countNodesByPredicate (fn (OneThing (7, _)) => true | _ => false) (OneThing (7, ManyThings ([1, 2], TwoThings (1, 2, Nothing))));\n";
+countNodesByPredicate (fn (OneThing (7, _)) => true | _ => false) (OneThing (7, ManyThings ([1, 2], TwoThings (1, 2, Nothing))));
+TextIO.print " **** countNodesByPredicate (fn (OneThing (2, _)) => true | _ => false) (OneThing (7, ManyThings ([1, 2], TwoThings (1, 2, Nothing))));\n";
+countNodesByPredicate (fn (OneThing (2, _)) => true | _ => false) (OneThing (7, ManyThings ([1, 2], TwoThings (1, 2, Nothing))));
+TextIO.print " **** countNodesByPredicate (fn (OneThing _) => true | _ => false) (OneThing (7, ManyThings ([1, 2], TwoThings (1, 2, OneThing (99, Nothing)))));\n";
+countNodesByPredicate (fn (OneThing _) => true | _ => false) (OneThing (7, ManyThings ([1, 2], TwoThings (1, 2, OneThing (99, Nothing)))));
+TextIO.print " **** countNodesByPredicate (fn Nothing => true | _ => false) Nothing;\n";
+countNodesByPredicate (fn Nothing => true | _ => false) Nothing;
+TextIO.print " **** countNodesByPredicate (fn Nothing => true | _ => false) (OneThing (7, Nothing));\n";
+countNodesByPredicate (fn Nothing => true | _ => false) (OneThing (7, Nothing));
+TextIO.print " **** countNodesByPredicate (fn Nothing => false | _ => true) (OneThing (7, ManyThings ([1, 2], TwoThings (1, 2, OneThing (99, Nothing)))));\n";
+countNodesByPredicate (fn Nothing => false | _ => true) (OneThing (7, ManyThings ([1, 2], TwoThings (1, 2, OneThing (99, Nothing)))));
+TextIO.print " **** countNodesByPredicate (fn (ManyThings ([], _)) => true | _ => false) (OneThing (7, ManyThings ([1, 2], TwoThings (1, 2, OneThing (99, ManyThings ([], ManyThings ([1], ManyThings ([], Nothing))))))));\n";
+countNodesByPredicate (fn (ManyThings ([], _)) => true | _ => false) (OneThing (7, ManyThings ([1, 2], TwoThings (1, 2, OneThing (99, ManyThings ([], ManyThings ([1], ManyThings ([], Nothing))))))));
+
+printPart "8";
+TextIO.print " **** countTwoThingsNodes Nothing;\n";
+countTwoThingsNodes Nothing;
+TextIO.print " **** countTwoThingsNodes (OneThing (7, Nothing));\n";
+countTwoThingsNodes (OneThing (7, Nothing));
+TextIO.print " **** countTwoThingsNodes (OneThing (7, ManyThings ([1, 2], TwoThings (1, 2, Nothing))));\n";
+countTwoThingsNodes (OneThing (7, ManyThings ([1, 2], TwoThings (1, 2, Nothing))));
+TextIO.print " **** countTwoThingsNodes (OneThing (7, ManyThings ([1, 2], TwoThings (1, 2, TwoThings (99, 2, Nothing)))));\n";
+countTwoThingsNodes (OneThing (7, ManyThings ([1, 2], TwoThings (1, 2, TwoThings (99, 2, Nothing)))));
+
+printPart "9";
+val Cexmp = (OneThing (7, ManyThings ([4, 3], TwoThings (10, 8, OneThing (99, Nothing)))));
+TextIO.print "**** reduceThingCollection (op +) 0 Cexmp;\n";
+reduceThingCollection (op +) 0 Cexmp;
+TextIO.print "**** reduceThingCollection (op ::) [] Cexmp;\n";
+reduceThingCollection (op ::) [] Cexmp;
+TextIO.print "**** reduceThingCollection Int.max 0 Cexmp;\n";
+reduceThingCollection Int.max 0 Cexmp;
+TextIO.print "**** reduceThingCollection (op -) 0 Cexmp;\n";
+reduceThingCollection (op -) 0 Cexmp;
+
+printPart "10";
+TextIO.print " **** flattenNTree EmptyNTree;\n";
+flattenNTree EmptyNTree;
+TextIO.print " **** flattenNTree (NTreeNode (2, [NTreeNode (3, [EmptyNTree]), NTreeNode (4, []), NTreeNode (9, [])]));\n";
+flattenNTree (NTreeNode (2, [NTreeNode (3, [EmptyNTree]), NTreeNode (4, []), NTreeNode (9, [])]));
+TextIO.print " **** flattenNTree (NTreeNode (2, [NTreeNode (3, [EmptyNTree]), NTreeNode (4, []), NTreeNode (9, [NTreeNode (7, []), NTreeNode(6, [])])]));\n";
+flattenNTree (NTreeNode (2, [NTreeNode (3, [EmptyNTree]), NTreeNode (4, []), NTreeNode (9, [NTreeNode (7, []), NTreeNode(6, [])])]));
+TextIO.print " **** flattenNTree (NTreeNode (1, [NTreeNode (2, [NTreeNode (3, [NTreeNode (99, []), NTreeNode (27, [NTreeNode (17, [])]), NTreeNode (42, [])])]), NTreeNode (4, []), NTreeNode (9, [NTreeNode (7, [NTreeNode (14, []), NTreeNode (92, []), NTreeNode (~77, [])]), NTreeNode(6, [])])]));\n";
+flattenNTree (NTreeNode (1, [NTreeNode (2, [NTreeNode (3, [NTreeNode (99, []), NTreeNode (27, [NTreeNode (17, [])]), NTreeNode (42, [])])]), NTreeNode (4, []), NTreeNode (9, [NTreeNode (7, [NTreeNode (14, []), NTreeNode (92, []), NTreeNode (~77, [])]), NTreeNode(6, [])])]));
+
+END
+grep -v "GC #" tmp | grep -v "Standard ML" | grep -v "autoloading" | grep -v "unit" | grep -v "Warning" | grep -v "dummy" | grep -v "library" | grep -v "FD" | grep -v '^- $'
+rm tmp
+

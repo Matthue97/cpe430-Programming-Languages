@@ -1,0 +1,4 @@
+    Write a function named     wordsFromFile that takes a filename as a string and returns a list containing the "words"
+that appear in the file.
+For this function, a "word" is          	 any sequence of non-whitespace characters. You can use Char.isSpace to check
+for      whitespace 		    characters.

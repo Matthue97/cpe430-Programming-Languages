@@ -1,0 +1,112 @@
+#!/bin/csh -f
+
+if (! -f "hw1.sml") then
+echo "must provide source file 'hw1.sml'"; exit 1
+endif
+
+/home/akeen/public/ml/bin/sml >&! tmp << END
+val devnull = Posix.FileSys.openf ("/dev/null", Posix.FileSys.O_WRONLY, Posix.FileSys.O.trunc);
+val sout = Posix.IO.dup(Posix.FileSys.stdout);
+Posix.IO.dup2 {old=devnull, new=Posix.FileSys.stdout};
+
+Control.Print.printDepth := 20;
+Control.Print.printLength := 100;
+
+use "hw1.sml";
+
+fun printPart s =
+   TextIO.print ("\n--------- Part" ^ s ^ " ---------\n")
+;
+
+Posix.IO.dup2 {old=sout, new=Posix.FileSys.stdout};
+
+printPart "1";
+TextIO.print " **** intToString 99;\n"; 
+intToString 99;
+TextIO.print " **** intToString ~1;\n"; 
+intToString ~1;
+TextIO.print " **** intToString 12;\n"; 
+intToString 12;
+TextIO.print " **** intToString ~4729;\n"; 
+intToString ~4729;
+
+printPart "2";
+TextIO.print " **** listLength [];\n"; 
+listLength [];
+TextIO.print " **** listLength [3, 2, 3, 4];\n"; 
+listLength [3, 2, 3, 4];
+TextIO.print " **** listLength [\"abc\", \"123\", \"shoe\"];\n"; 
+listLength ["abc", "123", "shoe"];
+
+printPart "3";
+TextIO.print " **** numberOf 1 [];\n";
+numberOf 1 [];
+TextIO.print " **** numberOf 4 [1,2,3,4];\n";
+numberOf 4 [1,2,3,4];
+TextIO.print " **** numberOf 5 [1,2,3,4];\n";
+numberOf 5 [1,2,3,4];
+TextIO.print " **** numberOf 4 [1,4,3,4];\n";
+numberOf 4 [1,4,3,4];
+TextIO.print " **** numberOf 4 [1,4,3,4,5,6,8,2,1,4];\n";
+numberOf 4 [1,4,3,4,5,6,8,2,1,4];
+
+printPart "4";
+TextIO.print " **** pairSwap [];\n";
+pairSwap [];
+TextIO.print " **** pairSwap [(1,2)];\n";
+pairSwap [(1,2)];
+TextIO.print " **** pairSwap [(1,2),(3,4),(5,6)];\n";
+pairSwap [(1,2),(3,4),(5,6)];
+TextIO.print " **** pairSwap [(1,#\"a\"),(2,#\"b\")];\n";
+pairSwap [(1,#"a"),(2,#"b")];
+
+printPart "5";
+TextIO.print " **** findPair 1 [(2, 3), (4, 1), (1, 9)];\n";
+findPair 1 [(2, 3), (4, 1), (1, 9)];
+TextIO.print " **** findPair \"key\" [(\"key\", 3), (\"key\", 1), (\"key\", 9)];\n";
+findPair "key" [("key", 3), ("key", 1), ("key", 9)];
+TextIO.print " **** findPair \"bob\" [(\"three\", 3), (\"shoe\", 1), (\"key\", 9)];\n";
+findPair "bob" [("three", 3), ("shoe", 1), ("key", 9)];
+
+printPart "6";
+TextIO.print " **** unzip [(1, #\"a\"), (2, #\"b\"), (3, #\"c\")];\n";
+unzip [(1, #"a"), (2, #"b"), (3, #"c")];
+TextIO.print " **** unzip [(#\"a\", 1), (#\"b\", 2), (#\"c\", 3)];\n";
+unzip [(#"a", 1), (#"b", 2), (#"c", 3)];
+TextIO.print " **** unzip [(1, 2), (3, 4), (5, 6)];\n";
+unzip [(1, 2), (3, 4), (5, 6)];
+TextIO.print " **** unzip [];\n";
+unzip [];
+
+printPart "7";
+TextIO.print " **** zip [1,2,3] [#\"a\", #\"b\", #\"c\"];\n";
+zip [1,2,3] [#"a", #"b", #"c"] handle UnbalancedZip => (TextIO.print "unexpected exception\n"; []);
+TextIO.print " **** zip [] [];\n";
+zip [] [] handle UnbalancedZip => (TextIO.print "unexpected exception\n"; []);
+TextIO.print " **** zip [1] [2];\n";
+zip [1] [2] handle UnbalancedZip => (TextIO.print "unexpected exception\n"; []);
+TextIO.print " **** zip [3, 2] [4, 5, 6];\n";
+zip [3, 2] [4, 5, 6] handle UnbalancedZip => (TextIO.print "caught expected exception\n"; []);
+
+printPart "8";
+TextIO.print " **** splitFilter (fn x => x mod 2 = 0) [1, 2, 3, 4, 5, 6];\n";
+splitFilter (fn x => x mod 2 = 0) [1, 2, 3, 4, 5, 6];
+TextIO.print " **** splitFilter (fn x => x > 0) [1, 2, 3, 4, 5, 6];\n";
+splitFilter (fn x => Int.>(x, 0)) [1, 2, 3, 4, 5, 6];
+TextIO.print " **** splitFilter (fn x => x < 0) [1, 2, 3, 4, 5, 6];\n";
+splitFilter (fn x => Int.<(x, 0)) [1, 2, 3, 4, 5, 6];
+TextIO.print " **** splitFilter (fn x => x > 0) [1, ~2, ~3, 4, ~5, 6];\n";
+splitFilter (fn x => Int.>(x, 0)) [1, ~2, ~3, 4, ~5, 6];
+
+printPart "9";
+TextIO.print " **** fileSubst \"fileSubst.input\" [(#\"a\", #\"A\"), (#\"1\", #\"9\"), (#\"a\", #\"-\"), (#\"z\", #\"Z\")];\n";
+fileSubst "fileSubst.input" [(#"a", #"A"), (#"1", #"9"), (#"a", #"-"), (#"z", #"Z")];
+
+printPart "10";
+TextIO.print " **** wordsFromFile \"wordsFromFile.input\";\n";
+wordsFromFile "wordsFromFile.input";
+
+END
+grep -v "GC #" tmp | grep -v "Standard ML" | grep -v "autoloading" | grep -v "unit" | grep -v "Warning" | grep -v "dummy" | grep -v "library" | grep -v "FD" | grep -v '^- $'
+rm tmp
+

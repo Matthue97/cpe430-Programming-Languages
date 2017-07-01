@@ -1,0 +1,457 @@
+SML not set: using default of /home/akeen/public/ml/bin/sml
+[--- New Feature Testing ---]
+==== tests/1_parser/badparse01.jsish ====
+==== tests/1_parser/badparse02.jsish ====
+==== tests/1_parser/badparse03.jsish ====
+==== tests/1_parser/badparse04.jsish ====
+==== tests/1_parser/badparse05.jsish ====
+==== tests/1_parser/badparse06.jsish ====
+==== tests/1_parser/badparse07.jsish ====
+==== tests/1_parser/badparse08.jsish ====
+==== tests/1_parser/badparse09.jsish ====
+==== tests/1_parser/badparse10.jsish ====
+==== tests/1_parser/badparse11.jsish ====
+==== tests/1_parser/badparse12.jsish ====
+==== tests/1_parser/badparse13.jsish ====
+==== tests/1_parser/badparse14.jsish ====
+==== tests/1_parser/badparse15.jsish ====
+==== tests/1_parser/badparse16.jsish ====
+==== tests/1_parser/badparse17.jsish ====
+==== tests/1_parser/badparse18.jsish ====
+==== tests/1_parser/badparse19.jsish ====
+==== tests/1_parser/badparse20.jsish ====
+==== tests/1_parser/badparse21.jsish ====
+==== tests/1_parser/badparse22.jsish ====
+==== tests/1_parser/badparse23.jsish ====
+==== tests/1_parser/badparse24.jsish ====
+==== tests/1_parser/badparse25.jsish ====
+==== tests/1_parser/badparse26.jsish ====
+==== tests/1_parser/badparse27.jsish ====
+==== tests/1_parser/badparse28.jsish ====
+==== tests/1_parser/badparse29.jsish ====
+==== tests/1_parser/badparse30.jsish ====
+==== tests/1_parser/badparse31.jsish ====
+==== tests/1_parser/badparse32.jsish ====
+==== tests/1_parser/badparse33.jsish ====
+==== tests/1_parser/badparse34.jsish ====
+==== tests/2_3_ast_echo/eval01.jsish ====
+==== tests/2_3_ast_echo/eval02.jsish ====
+==== tests/2_3_ast_echo/eval03.jsish ====
+==== tests/2_3_ast_echo/eval04.jsish ====
+==== tests/2_3_ast_echo/eval05.jsish ====
+==== tests/2_3_ast_echo/eval06.jsish ====
+==== tests/2_3_ast_echo/eval07.jsish ====
+==== tests/2_3_ast_echo/eval08.jsish ====
+==== tests/2_3_ast_echo/eval09.jsish ====
+==== tests/2_3_ast_echo/eval10.jsish ====
+==== tests/2_3_ast_echo/eval11.jsish ====
+==== tests/2_3_ast_echo/eval12.jsish ====
+==== tests/2_3_ast_echo/eval13.jsish ====
+==== tests/2_3_ast_echo/eval14.jsish ====
+==== tests/2_3_ast_echo/eval15.jsish ====
+==== tests/2_3_ast_echo/eval16.jsish ====
+==== tests/2_3_ast_echo/eval17.jsish ====
+==== tests/2_3_ast_echo/eval18.jsish ====
+==== tests/2_3_ast_echo/eval19.jsish ====
+==== tests/2_3_ast_echo/eval20.jsish ====
+==== tests/2_3_ast_echo/eval21.jsish ====
+==== tests/2_3_ast_echo/eval22.jsish ====
+==== tests/2_3_ast_echo/eval23.jsish ====
+==== tests/2_3_ast_echo/eval24.jsish ====
+==== tests/2_3_ast_echo/eval25.jsish ====
+==== tests/2_3_ast_echo/eval26.jsish ====
+==== tests/2_3_ast_echo/eval27.jsish ====
+==== tests/2_3_ast_echo/eval28.jsish ====
+==== tests/2_3_ast_echo/eval29.jsish ====
+==== tests/2_3_ast_echo/eval30.jsish ====
+==== tests/2_3_ast_echo/eval31.jsish ====
+==== tests/2_3_ast_echo/eval32.jsish ====
+==== tests/2_3_ast_echo/eval33.jsish ====
+==== tests/2_3_ast_echo/eval34.jsish ====
+==== tests/2_3_ast_echo/eval35.jsish ====
+==== tests/2_3_ast_echo/eval36.jsish ====
+==== tests/2_3_ast_echo/eval37.jsish ====
+==== tests/2_3_ast_echo/eval38.jsish ====
+==== tests/2_3_ast_echo/eval39.jsish ====
+==== tests/2_3_ast_echo/eval40.jsish ====
+==== tests/2_3_ast_echo/eval41.jsish ====
+==== tests/2_3_ast_echo/eval42.jsish ====
+==== tests/2_3_ast_echo/eval43.jsish ====
+==== tests/2_3_ast_echo/eval44.jsish ====
+==== tests/2_3_ast_echo/eval45.jsish ====
+==== tests/2_3_ast_echo/eval46.jsish ====
+==== tests/4_eval/eval01.jsish ====
+1,3d0
+< 0
+< 1
+< 2
+==== tests/4_eval/eval02.jsish ====
+1,3d0
+< 0
+< 1
+< 2
+==== tests/4_eval/eval03.jsish ====
+1,4d0
+< 0
+< 1
+< 2
+< 3
+==== tests/4_eval/eval04.jsish ====
+1,4d0
+< 0
+< 1
+< 2
+< 3
+==== tests/4_eval/eval05.jsish ====
+1,4d0
+< 0
+< 10
+< 11
+< 3
+==== tests/4_eval/eval06.jsish ====
+1,2d0
+< 9
+< 100
+==== tests/4_eval/eval07.jsish ====
+1,2d0
+< 9
+< 9
+==== tests/4_eval/eval08.jsish ====
+1d0
+< undefined
+==== tests/4_eval/eval09.jsish ====
+1,5d0
+< 28 true
+< 28
+< 21
+< false
+< 28 true
+==== tests/4_eval/eval10.jsish ====
+1d0
+< 120
+==== tests/4_eval/eval11.jsish ====
+1,4d0
+< 2
+< 3
+< 7
+< 7
+==== tests/4_eval/eval12.jsish ====
+1,5d0
+< 28
+< 3
+< 7
+< 8
+< 3
+==== tests/4_eval/eval13.jsish ====
+2,5d1
+< 2
+< 8
+< 2
+< 8
+==== tests/4_eval/eval14.jsish ====
+1,23d0
+< 20
+< 40
+< 38
+< 36
+< 34
+< 32
+< 30
+< 28
+< 26
+< 24
+< 22
+< 20
+< 18
+< 16
+< 14
+< 12
+< 10
+< 8
+< 6
+< 4
+< 2
+< 0
+< -1
+==== tests/4_eval/eval15.jsish ====
+1,15d0
+< 999
+< 3
+< 999
+< 3
+< 999
+< 3
+< 999
+< 999
+< 17
+< 999
+< 17
+< 999
+< 17
+< 999
+< 3
+==== tests/4_eval/eval16.jsish ====
+1,8d0
+< 3
+< 2
+< 1
+< 99
+< 2
+< 1
+< 99
+< 1
+==== tests/4_eval/eval17.jsish ====
+1,4d0
+< 2
+< 3
+< 2
+< 3
+==== tests/4_eval/eval18.jsish ====
+1,8d0
+< 4
+< 4
+< 4
+< 9
+< undefined
+< 4
+< 4
+< undefined
+==== tests/4_eval/eval19.jsish ====
+1d0
+< 120
+==== tests/4_eval/eval20.jsish ====
+1,3d0
+< 3
+< 7
+< 10
+==== tests/4_eval/eval21.jsish ====
+1,7d0
+< 0
+< 3
+< 1
+< 5
+< 2
+< 9
+< 4
+==== tests/4_eval/eval22.jsish ====
+1,9d0
+< 3
+< undefined
+< 10
+< 9
+< 8
+< 7
+< 6
+< 5
+< undefined
+==== tests/4_eval/eval23.jsish ====
+1,2d0
+< 1
+< 2
+==== tests/4_eval/eval24.jsish ====
+1d0
+< 3
+==== tests/4_eval/eval25.jsish ====
+1,2d0
+< 3
+< 8
+==== tests/4_eval/eval26.jsish ====
+1,2d0
+< 3
+< 8
+==== tests/4_eval/eval27.jsish ====
+1d0
+< 1
+==== tests/4_eval/eval28.jsish ====
+1d0
+< 7
+==== tests/4_eval/eval29.jsish ====
+1,2d0
+< 2
+< 7
+==== tests/4_eval/eval30.jsish ====
+1d0
+< 3
+==== tests/4_eval/eval31.jsish ====
+1,2d0
+< 2
+< 7
+==== tests/4_eval/eval32.jsish ====
+1,2d0
+< 3
+< 4
+==== tests/4_eval/eval33.jsish ====
+1,2d0
+< 1
+< 2
+==== tests/4_eval/eval34.jsish ====
+1,4d0
+< 100
+< 200
+< 99
+< 21
+==== tests/4_eval/eval35.jsish ====
+1,4d0
+< 100
+< 200
+< 2
+< 9
+==== tests/4_eval/eval36.jsish ====
+1,8d0
+< 1
+< 2
+< 3
+< 1
+< 2
+< 3
+< 4
+< 4
+==== tests/4_eval/eval37.jsish ====
+1,8d0
+< 0
+< 1
+< 2
+< 0
+< 1
+< 2
+< 3
+< 3
+==== tests/4_eval/eval38.jsish ====
+1,4d0
+< 3
+< 4
+< 10
+< 0
+==== tests/4_eval/eval39.jsish ====
+1,8d0
+< 1
+< 3
+< 5
+< 7
+< 9
+< 11
+< 13
+< 15
+==== tests/4_eval/eval40.jsish ====
+1d0
+< 120
+==== tests/4_eval/eval41.jsish ====
+1,21d0
+< 1
+< 2
+< 3
+< 2
+< 101
+< 4
+< 5
+< 104
+< 7
+< 5
+< 2
+< 7
+< 5
+< 104
+< 7
+< 7
+< 4
+< 9
+< 7
+< 104
+< 9
+==== tests/4_eval/eval42.jsish ====
+1d0
+< Named function expression f.
+==== tests/4_eval/eval43.jsish ====
+1,4d0
+< undefined
+< 1
+< 9
+< 9
+==== tests/4_eval/eval44.jsish ====
+1,2d0
+< 2
+< 3
+==== tests/4_eval/eval45.jsish ====
+1,5d0
+< in g
+< in h
+< in g
+< in f
+< global
+==== tests/4_eval/eval46.jsish ====
+1,2d0
+< 1
+< undefined
+==== tests/4_eval/eval47.jsish ====
+1,2d0
+< 1
+< 2
+==== tests/4_eval/eval48.jsish ====
+1d0
+< from h
+==== tests/4_eval/eval49.jsish ====
+1,2d0
+< function
+< function
+==== tests/4_eval/eval50.jsish ====
+1,2d0
+< function
+< function
+==== tests/4_eval/eval51.jsish ====
+1,3d0
+< true
+< false
+< false
+==== tests/4_eval/eval52.jsish ====
+1,4d0
+< undefined
+< 1
+< 9
+< undefined
+==== tests/4_eval/ycomb.jsish ====
+1d0
+< 720
+==== tests/4_type_error/eval01.jsish ====
+1d0
+< attempt to invoke 'number' value as a function
+==== tests/4_type_error/eval02.jsish ====
+1d0
+< attempt to invoke 'undefined' value as a function
+==== tests/4_type_error/eval03.jsish ====
+1d0
+< operator '>' requires number * number, found boolean * number
+==== tests/4_type_error/eval04.jsish ====
+1d0
+< operator '>' requires number * number, found number * boolean
+==== tests/4_type_error/eval05.jsish ====
+1d0
+< boolean guard required for 'if' statement, found number
+==== tests/4_type_error/eval06.jsish ====
+1d0
+< attempt to invoke 'undefined' value as a function
+==== tests/4_type_error/eval07.jsish ====
+1d0
+< operator '+' requires number * number or string * string, found number * undefined
+==== tests/4_type_error/eval08.jsish ====
+1d0
+< operator '+' requires number * number or string * string, found boolean * number
+==== tests/4_type_error/eval09.jsish ====
+1d0
+< operator '+' requires number * number or string * string, found number * boolean
+==== tests/4_type_error/eval10.jsish ====
+1d0
+< variable 'f' not found
+==== tests/4_type_error/eval11.jsish ====
+1,3d0
+< attempt to invoke 'boolean' value as a function
+< function
+< true
+==== tests/4_type_error/eval12.jsish ====
+1d0
+< operator '+' requires number * number or string * string, found function * number
+==== tests/4_type_error/eval13.jsish ====
+1d0
+< variable 'f' not found
+==== tests/4_type_error/eval14.jsish ====
+1d0
+< return statements are only valid inside functions

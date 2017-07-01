@@ -1,0 +1,182 @@
+
+--------- Part1 ---------
+ **** consList (1, EmptyList);
+val it = ListNode (1,EmptyList) : int List
+ **** consList (2, consList (1, EmptyList));
+val it = ListNode (2,ListNode (1,EmptyList)) : int List
+ **** consList (consList (2, EmptyList), consList (EmptyList, EmptyList));
+val it = ListNode (ListNode (2,EmptyList),ListNode (EmptyList,EmptyList))
+  : int List List
+ **** headList (consList (1, EmptyList));
+val it = 1 : int
+ **** headList (consList (2, consList (1, EmptyList)));
+val it = 2 : int
+ **** headList (consList (consList (2, EmptyList), consList (EmptyList, EmptyList)));
+val it = ListNode (2,EmptyList) : int List
+ **** tailList (consList (1, EmptyList));
+val it = EmptyList : int List
+ **** tailList (consList (2, consList (1, EmptyList)));
+val it = ListNode (1,EmptyList) : int List
+ **** tailList (consList (consList (2, EmptyList), consList (EmptyList, EmptyList)));
+val it = ListNode (EmptyList,EmptyList) : int List List
+ **** tailList (tailList (consList (consList (2, EmptyList), consList (EmptyList, EmptyList))));
+val it = EmptyList : int List List
+ **** headList (tailList (consList (consList (2, EmptyList), consList (EmptyList, EmptyList))));
+val it = EmptyList : int List
+
+--------- Part2 ---------
+ **** lengthList EmptyList;
+val it = 0 : int
+ **** lengthList (ListNode (9, (ListNode (3, ListNode (2, EmptyList)))));
+val it = 3 : int
+ **** lengthList (ListNode (9, ListNode (2, EmptyList)));
+val it = 2 : int
+
+--------- Part3 ---------
+ **** mapList (fn x => x * x) EmptyList;
+val it = EmptyList : int List
+ **** mapList (fn x => x * x) (ListNode (9, (ListNode (3, ListNode (2, EmptyList)))));
+val it = ListNode (81,ListNode (9,ListNode (4,EmptyList))) : int List
+ **** mapList (fn x => x + 1) (ListNode (9, (ListNode (3, ListNode (2, EmptyList)))));
+val it = ListNode (10,ListNode (4,ListNode (3,EmptyList))) : int List
+ **** mapList (fn x => x + 1) (ListNode (9, ListNode (2, EmptyList)));
+val it = ListNode (10,ListNode (3,EmptyList)) : int List
+ **** mapList (fn x => x * x) (ListNode (9, ListNode (2, EmptyList)));
+val it = ListNode (81,ListNode (4,EmptyList)) : int List
+
+--------- Part4 ---------
+val Bexmp1 =
+  BinTreeNode
+    {lft=BinTreeNode {lft=EmptyBinTree,rht=EmptyBinTree,value=9},
+     rht=BinTreeNode {lft=EmptyBinTree,rht=EmptyBinTree,value=4},value=1}
+  : int BinTree
+val Bexmp2 =
+  BinTreeNode
+    {lft=BinTreeNode {lft=EmptyBinTree,rht=EmptyBinTree,value=2},
+     rht=EmptyBinTree,value=4} : int BinTree
+val Bexmp3 =
+  BinTreeNode
+    {lft=EmptyBinTree,
+     rht=BinTreeNode {lft=EmptyBinTree,rht=EmptyBinTree,value=2},value=4}
+  : int BinTree
+val Bexmp =
+  BinTreeNode
+    {lft=BinTreeNode
+           {lft=BinTreeNode
+                  {lft=BinTreeNode {lft=EmptyBinTree,rht=EmptyBinTree,value=9},
+                   rht=BinTreeNode {lft=EmptyBinTree,rht=EmptyBinTree,value=4},
+                   value=1},
+            rht=BinTreeNode
+                  {lft=BinTreeNode {lft=EmptyBinTree,rht=EmptyBinTree,value=2},
+                   rht=EmptyBinTree,value=4},value=0},
+     rht=BinTreeNode
+           {lft=EmptyBinTree,
+            rht=BinTreeNode {lft=EmptyBinTree,rht=EmptyBinTree,value=2},
+            value=4},value=12} : int BinTree
+ **** mapBinTree (fn x => x + 1) Bexmp;
+val it =
+  BinTreeNode
+    {lft=BinTreeNode
+           {lft=BinTreeNode
+                  {lft=BinTreeNode
+                         {lft=EmptyBinTree,rht=EmptyBinTree,value=10},
+                   rht=BinTreeNode {lft=EmptyBinTree,rht=EmptyBinTree,value=5},
+                   value=2},
+            rht=BinTreeNode
+                  {lft=BinTreeNode {lft=EmptyBinTree,rht=EmptyBinTree,value=3},
+                   rht=EmptyBinTree,value=5},value=1},
+     rht=BinTreeNode
+           {lft=EmptyBinTree,
+            rht=BinTreeNode {lft=EmptyBinTree,rht=EmptyBinTree,value=3},
+            value=5},value=13} : int BinTree
+ **** mapBinTree (fn x => x * 2) EmptyBinTree;
+val it = EmptyBinTree : int BinTree
+ **** mapBinTree (fn x => x * x) Bexmp;
+val it =
+  BinTreeNode
+    {lft=BinTreeNode
+           {lft=BinTreeNode
+                  {lft=BinTreeNode
+                         {lft=EmptyBinTree,rht=EmptyBinTree,value=81},
+                   rht=BinTreeNode
+                         {lft=EmptyBinTree,rht=EmptyBinTree,value=16},value=1},
+            rht=BinTreeNode
+                  {lft=BinTreeNode {lft=EmptyBinTree,rht=EmptyBinTree,value=4},
+                   rht=EmptyBinTree,value=16},value=0},
+     rht=BinTreeNode
+           {lft=EmptyBinTree,
+            rht=BinTreeNode {lft=EmptyBinTree,rht=EmptyBinTree,value=4},
+            value=16},value=144} : int BinTree
+
+--------- Part5 ---------
+ **** countThingsInCollection Nothing;
+val it = 0 : int
+ **** countThingsInCollection (OneThing (7, Nothing));
+val it = 1 : int
+ **** countThingsInCollection (OneThing (7, ManyThings ([1,2], TwoThings (1,2,Nothing))));
+val it = 5 : int
+ **** countThingsInCollection (OneThing (7, ManyThings ([1,2], TwoThings (1,2, ManyThings ([3,4,5], ManyThings ([], OneThing (2, TwoThings (9, 4, Nothing))))))));
+val it = 11 : int
+
+--------- Part6 ---------
+ **** countOneThingNodes Nothing;
+val it = 0 : int
+ **** countOneThingNodes (OneThing (7, Nothing));
+val it = 1 : int
+ **** countOneThingNodes (OneThing (7, ManyThings ([1, 2], TwoThings (1, 2, Nothing))));
+val it = 1 : int
+ **** countOneThingNodes (OneThing (7, ManyThings ([1, 2], TwoThings (1, 2, OneThing (99, Nothing)))));
+val it = 2 : int
+
+--------- Part7 ---------
+ **** countNodesByPredicate (fn (OneThing _) => true | _ => false) Nothing;
+val it = 0 : int
+ **** countNodesByPredicate (fn (OneThing _) => true | _ => false) (OneThing (7, Nothing));
+val it = 1 : int
+ **** countNodesByPredicate (fn (OneThing (7, _)) => true | _ => false) (OneThing (7, ManyThings ([1, 2], TwoThings (1, 2, Nothing))));
+val it = 1 : int
+ **** countNodesByPredicate (fn (OneThing (2, _)) => true | _ => false) (OneThing (7, ManyThings ([1, 2], TwoThings (1, 2, Nothing))));
+val it = 0 : int
+ **** countNodesByPredicate (fn (OneThing _) => true | _ => false) (OneThing (7, ManyThings ([1, 2], TwoThings (1, 2, OneThing (99, Nothing)))));
+val it = 2 : int
+ **** countNodesByPredicate (fn Nothing => true | _ => false) Nothing;
+val it = 1 : int
+ **** countNodesByPredicate (fn Nothing => true | _ => false) (OneThing (7, Nothing));
+val it = 1 : int
+ **** countNodesByPredicate (fn Nothing => false | _ => true) (OneThing (7, ManyThings ([1, 2], TwoThings (1, 2, OneThing (99, Nothing)))));
+val it = 4 : int
+ **** countNodesByPredicate (fn (ManyThings ([], _)) => true | _ => false) (OneThing (7, ManyThings ([1, 2], TwoThings (1, 2, OneThing (99, ManyThings ([], ManyThings ([1], ManyThings ([], Nothing))))))));
+val it = 2 : int
+
+--------- Part8 ---------
+ **** countTwoThingsNodes Nothing;
+val it = 0 : int
+ **** countTwoThingsNodes (OneThing (7, Nothing));
+val it = 0 : int
+ **** countTwoThingsNodes (OneThing (7, ManyThings ([1, 2], TwoThings (1, 2, Nothing))));
+val it = 1 : int
+ **** countTwoThingsNodes (OneThing (7, ManyThings ([1, 2], TwoThings (1, 2, TwoThings (99, 2, Nothing)))));
+val it = 2 : int
+
+--------- Part9 ---------
+val Cexmp =
+  OneThing (7,ManyThings ([4,3],TwoThings (10,8,OneThing (99,Nothing))))
+  : int ThingCollection
+**** reduceThingCollection (op +) 0 Cexmp;
+val it = 131 : int
+**** reduceThingCollection (op ::) [] Cexmp;
+val it = [7,4,3,10,8,99] : int list
+**** reduceThingCollection Int.max 0 Cexmp;
+val it = 99 : int
+**** reduceThingCollection (op -) 0 Cexmp;
+val it = ~95 : int
+
+--------- Part10 ---------
+ **** flattenNTree EmptyNTree;
+val it = [] : int list
+ **** flattenNTree (NTreeNode (2, [NTreeNode (3, [EmptyNTree]), NTreeNode (4, []), NTreeNode (9, [])]));
+val it = [2,3,4,9] : int list
+ **** flattenNTree (NTreeNode (2, [NTreeNode (3, [EmptyNTree]), NTreeNode (4, []), NTreeNode (9, [NTreeNode (7, []), NTreeNode(6, [])])]));
+val it = [2,3,4,9,7,6] : int list
+ **** flattenNTree (NTreeNode (1, [NTreeNode (2, [NTreeNode (3, [NTreeNode (99, []), NTreeNode (27, [NTreeNode (17, [])]), NTreeNode (42, [])])]), NTreeNode (4, []), NTreeNode (9, [NTreeNode (7, [NTreeNode (14, []), NTreeNode (92, []), NTreeNode (~77, [])]), NTreeNode(6, [])])]));
+val it = [1,2,3,99,27,17,42,4,9,7,14,92,~77,6] : int list

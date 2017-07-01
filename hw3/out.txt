@@ -1,0 +1,294 @@
+==== Part 1 -- tests/input/input01 ====
+==== Part 1 -- tests/input/input02 ====
+==== Part 1 -- tests/input/input03 ====
+==== Part 1 -- tests/input/input04 ====
+==== Part 1 -- tests/input/input05 ====
+==== Part 1 -- tests/input/input06 ====
+==== Part 1 -- tests/input/input07 ====
+==== Part 1 -- tests/input/input08 ====
+==== Part 1 -- tests/input/input09 ====
+==== Part 1 -- tests/input/input10 ====
+4c4
+< string: "abc def 132 ,&^\t\n\"xyz..---."
+---
+> string: "abc def 132 ,&^\t\n\\"xyz..---."
+==== Part 1 -- tests/input/input11 ====
+==== Part 1 -- tests/input/input12 ====
+==== Part 1 -- tests/input/input13 ====
+==== Part 1 -- tests/input/input14 ====
+==== Part 1 -- tests/input/input15 ====
+1d0
+< invalid symbol: '@'
+3a3
+> invalid symbol: '@'
+==== Part 1 -- tests/input/input16 ====
+==== Part 1 -- tests/input/input17 ====
+==== Part 2 -- tests/input/input01 ====
+2,16c2
+< val it = TK_ID "catch" : token
+< val it = TK_ID "delete" : token
+< val it = TK_ELSE : token
+< val it = TK_FALSE : token
+< val it = TK_ID "finally" : token
+< val it = TK_FUNCTION : token
+< val it = TK_IF : token
+< val it = TK_NEW : token
+< val it = TK_ID "null" : token
+< val it = TK_PRINT : token
+< val it = TK_RETURN : token
+< val it = TK_THIS : token
+< val it = TK_ID "throw" : token
+< val it = TK_TRUE : token
+< val it = TK_ID "try" : token
+---
+> stdIn:7.1-7.10 Error: unbound variable or constructor: nextToken
+==== Part 2 -- tests/input/input02 ====
+2,16c2
+< val it = TK_FUNCTION : token
+< val it = TK_IF : token
+< val it = TK_NEW : token
+< val it = TK_ID "printreturn" : token
+< val it = TK_FALSE : token
+< val it = TK_ID "finally" : token
+< val it = TK_ID "null" : token
+< val it = TK_ID "identifier" : token
+< val it = TK_PRINT : token
+< val it = TK_RETURN : token
+< val it = TK_ID "catch" : token
+< val it = TK_ID "delete" : token
+< val it = TK_ELSE : token
+< val it = TK_TYPEOF : token
+< val it = TK_UNDEFINED : token
+---
+> stdIn:7.1-7.10 Error: unbound variable or constructor: nextToken
+==== Part 2 -- tests/input/input03 ====
+2,16c2
+< val it = TK_ASSIGN : token
+< val it = TK_LBRACE : token
+< val it = TK_RBRACE : token
+< val it = TK_LPAREN : token
+< val it = TK_RPAREN : token
+< val it = TK_LBRACKET : token
+< val it = TK_RBRACKET : token
+< val it = TK_COMMA : token
+< val it = TK_SEMI : token
+< val it = TK_QUESTION : token
+< val it = TK_DOT : token
+< val it = TK_COLON : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+---
+> stdIn:7.1-7.10 Error: unbound variable or constructor: nextToken
+==== Part 2 -- tests/input/input04 ====
+2,16c2
+< val it = TK_ASSIGN : token
+< val it = TK_DOT : token
+< val it = TK_LBRACE : token
+< val it = TK_RBRACE : token
+< val it = TK_LPAREN : token
+< val it = TK_RPAREN : token
+< val it = TK_LBRACKET : token
+< val it = TK_RBRACKET : token
+< val it = TK_COMMA : token
+< val it = TK_SEMI : token
+< val it = TK_QUESTION : token
+< val it = TK_COLON : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+---
+> stdIn:7.1-7.10 Error: unbound variable or constructor: nextToken
+==== Part 2 -- tests/input/input05 ====
+2,16c2
+< val it = TK_EQ : token
+< val it = TK_NE : token
+< val it = TK_LT : token
+< val it = TK_GT : token
+< val it = TK_LE : token
+< val it = TK_GE : token
+< val it = TK_NOT : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+---
+> stdIn:7.1-7.10 Error: unbound variable or constructor: nextToken
+==== Part 2 -- tests/input/input06 ====
+2,16c2
+< val it = TK_EQ : token
+< val it = TK_ASSIGN : token
+< val it = TK_NE : token
+< val it = TK_LT : token
+< val it = TK_GT : token
+< val it = TK_LE : token
+< val it = TK_GE : token
+< val it = TK_NOT : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+---
+> stdIn:7.1-7.10 Error: unbound variable or constructor: nextToken
+==== Part 2 -- tests/input/input07 ====
+2,16c2
+< val it = TK_AND : token
+< val it = TK_OR : token
+< val it = TK_LE : token
+< val it = TK_ASSIGN : token
+< val it = TK_GE : token
+< val it = TK_ASSIGN : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+---
+> stdIn:7.1-7.10 Error: unbound variable or constructor: nextToken
+==== Part 2 -- tests/input/input08 ====
+2,16c2
+< val it = TK_PLUS : token
+< val it = TK_MINUS : token
+< val it = TK_TIMES : token
+< val it = TK_DIVIDE : token
+< val it = TK_MOD : token
+< val it = TK_NOT : token
+< val it = TK_GT : token
+< val it = TK_AND : token
+< val it = TK_LBRACE : token
+< val it = TK_RBRACKET : token
+< val it = TK_SEMI : token
+< val it = TK_QUESTION : token
+< val it = TK_COMMA : token
+< val it = TK_COLON : token
+< val it = TK_EQ : token
+---
+> stdIn:7.1-7.10 Error: unbound variable or constructor: nextToken
+==== Part 2 -- tests/input/input09 ====
+2,16c2
+< val it = TK_NUM 123 : token
+< val it = TK_ID "abc349" : token
+< val it = TK_MINUS : token
+< val it = TK_ID "fwef232" : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+---
+> stdIn:7.1-7.10 Error: unbound variable or constructor: nextToken
+==== Part 2 -- tests/input/input10 ====
+2,16c2
+< val it = TK_STRING "" : token
+< val it = TK_STRING "abc" : token
+< val it = TK_STRING "\n" : token
+< val it = TK_STRING "abc def 132 ,&^\t\n\"xyz..---." : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+< val it = TK_EOF : token
+---
+> stdIn:7.1-7.10 Error: unbound variable or constructor: nextToken
+==== Part 2 -- tests/input/input11 ====
+2,16c2
+< val it = TK_VAR : token
+< val it = TK_ID "factorial" : token
+< val it = TK_ASSIGN : token
+< val it = TK_FUNCTION : token
+< val it = TK_LPAREN : token
+< val it = TK_ID "n" : token
+< val it = TK_RPAREN : token
+< val it = TK_LBRACE : token
+< val it = TK_IF : token
+< val it = TK_LPAREN : token
+< val it = TK_ID "n" : token
+< val it = TK_EQ : token
+< val it = TK_ASSIGN : token
+< val it = TK_NUM 0 : token
+< val it = TK_RPAREN : token
+---
+> stdIn:7.1-7.10 Error: unbound variable or constructor: nextToken
+==== Part 2 -- tests/input/input12 ====
+2,16c2
+< val it = TK_VAR : token
+< val it = TK_ID "sum" : token
+< val it = TK_ASSIGN : token
+< val it = TK_FUNCTION : token
+< val it = TK_LPAREN : token
+< val it = TK_RPAREN : token
+< val it = TK_LBRACE : token
+< val it = TK_VAR : token
+< val it = TK_ID "i" : token
+< val it = TK_COMMA : token
+< val it = TK_ID "x" : token
+< val it = TK_ASSIGN : token
+< val it = TK_NUM 0 : token
+< val it = TK_SEMI : token
+< val it = TK_ID "for" : token
+---
+> stdIn:7.1-7.10 Error: unbound variable or constructor: nextToken
+==== Part 2 -- tests/input/input13 ====
+2,16c2
+< val it = TK_ID "LCMCalculator" : token
+< val it = TK_DOT : token
+< val it = TK_ID "prototype" : token
+< val it = TK_ASSIGN : token
+< val it = TK_LBRACE : token
+< val it = TK_ID "constructor" : token
+< val it = TK_COLON : token
+< val it = TK_ID "LCMCalculator" : token
+< val it = TK_COMMA : token
+< val it = TK_ID "gcd" : token
+< val it = TK_COLON : token
+< val it = TK_FUNCTION : token
+< val it = TK_LPAREN : token
+< val it = TK_RPAREN : token
+< val it = TK_LBRACE : token
+---
+> stdIn:7.1-7.10 Error: unbound variable or constructor: nextToken
+==== Part 2 -- tests/input/input14 ====
+2c2
+< string not terminated
+---
+> stdIn:7.1-7.10 Error: unbound variable or constructor: nextToken
+==== Part 2 -- tests/input/input15 ====
+2,4c2
+< val it = TK_NUM 123 : token
+< val it = TK_STRING "@" : token
+< invalid symbol: '@'
+---
+> stdIn:7.1-7.10 Error: unbound variable or constructor: nextToken
+==== Part 2 -- tests/input/input16 ====
+2c2
+< invalid escape sequence: '\q'
+---
+> stdIn:7.1-7.10 Error: unbound variable or constructor: nextToken
+==== Part 2 -- tests/input/input17 ====
+2c2
+< invalid symbol: '&'
+---
+> stdIn:7.1-7.10 Error: unbound variable or constructor: nextToken
